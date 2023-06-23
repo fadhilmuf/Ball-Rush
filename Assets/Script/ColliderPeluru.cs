@@ -11,11 +11,11 @@ public class ColliderPeluru : MonoBehaviour
     {
         switch (other.gameObject.tag)
         {
-            case "Player":
-                GetComponent<SphereCollider>().isTrigger = true;
+            case "+2":
+                GetComponent<Collider>().isTrigger = true;
             break;
-            case "Block":
-                GetComponent<SphereCollider>().isTrigger = true;
+            default:
+                GetComponent<Collider>().isTrigger = true;
             break;
         }
     }
