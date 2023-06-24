@@ -19,6 +19,7 @@ TagManager:
   - -16
   - peluru
   - Ground
+  - Boss
   layers:
   - Default
   - TransparentFX
