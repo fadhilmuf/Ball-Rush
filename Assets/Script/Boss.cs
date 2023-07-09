@@ -1,10 +1,14 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Boss : MonoBehaviour
 {
-    float speed = 5f;
+    float speed = 0f;
     float broke;
+    float decrease = 1f;
+
+    public Slider uiSlider;
 
     void Update()
     {
@@ -21,10 +25,7 @@ public class Boss : MonoBehaviour
         switch (other.gameObject.tag)
         {
             case "peluru":
-                broke++;
-            break;
-            case "Player":
-                SceneManager.LoadScene(0);
+                uiSlider.value -= decrease;
             break;
         }
     }

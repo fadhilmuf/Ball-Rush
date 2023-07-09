@@ -5,13 +5,17 @@ using UnityEngine.SceneManagement;
 public class movement : MonoBehaviour
 {
     public Text skor;
+    public Canvas failed;
+    public ParticleSystem failedParticle;
+
+    public MeshRenderer meshRenderer;
     
     float speed = 2f;
     float speedForward = 5f;
     float speedBullet = 5000f;
 
     int score;
-
+    
     public GameObject bulletPrefab;
 
     public float spawnDistance = 1.0f;
@@ -49,10 +53,15 @@ public class movement : MonoBehaviour
 
     void OnCollisionEnter(Collision other) //when object collide to non trigger object
     {
+        GameObject player = other.gameObject;
+
         switch (other.gameObject.tag)
         {
             case "Block":
-                Crash();
+                Hit();
+            break;
+            case "Boss":
+                Hit();
             break;
             case "x2":
                 kali2();
@@ -93,6 +102,14 @@ public class movement : MonoBehaviour
         }
     }
 
+    void Hit()
+    {
+        failed.enabled = true;
+        speedForward = 0f;
+        speed = 0f;
+        failedParticle.Play();
+        meshRenderer.enabled = false;
+    }
     //so i create scoring manually because i'm dumb and my brain so smolll:(
     private void tambah2()
     {
