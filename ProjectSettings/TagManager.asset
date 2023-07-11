@@ -20,6 +20,7 @@ TagManager:
   - peluru
   - Ground
   - Boss
+  - Coin
   layers:
   - Default
   - TransparentFX

@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class movement : MonoBehaviour
 {
     public Text skor;
+    public Text coinPoint;
     public Canvas failed;
     public ParticleSystem failedParticle;
 
@@ -15,6 +16,7 @@ public class movement : MonoBehaviour
     float speedBullet = 5000f;
 
     int score;
+    int coin;
     
     public GameObject bulletPrefab;
 
@@ -32,7 +34,8 @@ public class movement : MonoBehaviour
         //skor UI
         skor.text = score.ToString();
 
-        //reloadLevel
+        //coin
+        coinPoint.text = coin.ToString();
 
         //shoot
         if(Input.GetKeyDown(KeyCode.Tab))
@@ -47,12 +50,22 @@ public class movement : MonoBehaviour
         }
     }
 
+    void Coin()
+    {
+
+    }
+
+
     void OnCollisionEnter(Collision other) //when object collide to non trigger object
     {
-        GameObject duar = other.gameObject;
+        GameObject obs = other.gameObject;
 
         switch (other.gameObject.tag)
         {
+            case "Coin":
+                obs.SetActive(false);
+                coin++;
+            break;
             case "Block":
                 Hit();
             break;
