@@ -6,6 +6,7 @@ public class movement : MonoBehaviour
 {
     public Text skor;
     public Text coinPoint;
+    public Text coinShop;
     public Canvas failed;
     public ParticleSystem failedParticle;
 
@@ -36,6 +37,7 @@ public class movement : MonoBehaviour
 
         //coin
         coinPoint.text = coin.ToString();
+        coinShop.text = coin.ToString();
 
         //shoot
         if(Input.GetKeyDown(KeyCode.Tab))
