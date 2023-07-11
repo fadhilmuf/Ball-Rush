@@ -33,10 +33,6 @@ public class movement : MonoBehaviour
         skor.text = score.ToString();
 
         //reloadLevel
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            ReloadLevel();
-        }
 
         //shoot
         if(Input.GetKeyDown(KeyCode.Tab))
@@ -53,7 +49,7 @@ public class movement : MonoBehaviour
 
     void OnCollisionEnter(Collision other) //when object collide to non trigger object
     {
-        GameObject player = other.gameObject;
+        GameObject duar = other.gameObject;
 
         switch (other.gameObject.tag)
         {
