@@ -21,6 +21,7 @@ TagManager:
   - Ground
   - Boss
   - Coin
+  - color
   layers:
   - Default
   - TransparentFX

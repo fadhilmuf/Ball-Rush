@@ -13,7 +13,7 @@ public class movement : MonoBehaviour
     public MeshRenderer meshRenderer;
     
     float speed = 2f;
-    float speedForward = 5f;
+    float speedForward = 10f;
     float speedBullet = 5000f;
 
     int score;
@@ -52,27 +52,26 @@ public class movement : MonoBehaviour
         }
     }
 
-    void Coin()
+    void OnTriggerEnter(Collider other)
     {
-
-    }
-
-
-    void OnCollisionEnter(Collision other) //when object collide to non trigger object
-    {
-        GameObject obs = other.gameObject;
-
-        switch (other.gameObject.tag)
+        GameObject c = other.gameObject;
+        switch(other.gameObject.tag)
         {
             case "Coin":
-                obs.SetActive(false);
+                c.SetActive(false);
                 coin++;
             break;
-            case "Block":
-                Hit();
+            case "color":
+                gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
             break;
-            case "Boss":
-                Hit();
+            case "+2":
+                tambah2();
+            break;
+            case "+6":
+                tambah6();
+            break;
+            case "+20":
+                tambah20();
             break;
             case "x2":
                 kali2();
@@ -92,15 +91,6 @@ public class movement : MonoBehaviour
             case ":10":
                 bagi10();
             break;
-            case "+2":
-                tambah2();
-            break;
-            case "+6":
-                tambah6();
-            break;
-            case "+20":
-                tambah20();
-            break;
             case "-1":
                 kurang1();
             break;
@@ -109,6 +99,22 @@ public class movement : MonoBehaviour
             break;
             case "-16":
                 kurang16();
+            break;
+        }
+    }
+
+
+    void OnCollisionEnter(Collision other) //when object collide to non trigger object
+    {
+        GameObject obs = other.gameObject;
+
+        switch (other.gameObject.tag)
+        {
+            case "Block":
+                Hit();
+            break;
+            case "Boss":
+                Hit();
             break;
         }
     }
